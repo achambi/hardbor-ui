@@ -38,7 +38,7 @@ export class SpecialityService {
 
   add(speciality: GeneralRequest) {
     const url = ApiEndpointService.getEndpoint('/speciality');
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.httpClient.post<any>(url, JSON.stringify(speciality), httpOptions);
   }
 }

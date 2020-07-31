@@ -47,8 +47,6 @@ export class SpecialityListComponent implements OnInit, AfterViewInit {
 
   openAddSpeciality(): void {
     const dialogRef = this.dialog.open(ModalSpecialityComponent, {
-      width: '50%',
-      height: '70%',
       autoFocus: false
     });
     dialogRef.afterClosed().subscribe((resultMessage: boolean) => {

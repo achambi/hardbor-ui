@@ -11,6 +11,7 @@ import { SpecialityService } from '@services/speciality/speciality.service';
 export class ModalSpecialityComponent implements OnInit {
   name: string;
   description: string;
+
   constructor(private dialogRef: MatDialogRef<ModalSpecialityComponent>,
               private specialityService: SpecialityService) {
   }

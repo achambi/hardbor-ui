@@ -24,7 +24,7 @@ export class ApiEndpointService {
   /**
    * Map of contexts for API endpoints.
    */
-  private static CONTEXT = '/';
+  private static CONTEXT = '';
   private static AUTH_CONTEXT = '/login';
 
   public static getEndpoint(url: string): string {

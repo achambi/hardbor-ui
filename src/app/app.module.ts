@@ -24,7 +24,11 @@ import { ModalSpecialityComponent } from './speciality-list/modal-speciality/mod
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import { ModalHospitalComponent } from './hospital-list/modal-hospital/modal-hospital.component';
+import { ModalDoctorComponent } from './doctor-list/modal-doctor/modal-.dotor.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     DoctorListComponent,
     HospitalListComponent,
     SpecialityListComponent,
-    ModalSpecialityComponent
+    ModalSpecialityComponent,
+    ModalHospitalComponent,
+    ModalDoctorComponent
   ],
   imports: [
     BrowserModule,
@@ -51,11 +57,14 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
     MatDialogModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

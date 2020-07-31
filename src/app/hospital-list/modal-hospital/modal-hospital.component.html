@@ -1,7 +1,7 @@
-<div class="container" style="background-color: white;">
+<div class="container h-100" style="background-color: white;">
   <div class="row align-items-center">
     <div class="col-md-12">
-      <h1 mat-dialog-title>Adicionar especialidad</h1>
+      <h1 mat-dialog-title>Adicionar hospital</h1>
     </div>
   </div>
   <div class="row">
@@ -9,7 +9,7 @@
       <label>Nombre:</label>
     </div>
     <div class="col-md-6">
-      <input name="name" type="text" [(ngModel)]="this.name" class="w-100" />
+      <input type="text" [(ngModel)]="hospitalName" class="w-100" />
     </div>
   </div>
   <div class="row">
@@ -17,10 +17,10 @@
       <label>Descripción:</label>
     </div>
     <div class="col-md-6">
-      <input name="description" type="text" [(ngModel)]="this.description" class="w-100" />
+      <input type="text" [(ngModel)]="hospitalDescription" class="w-100" />
     </div>
   </div>
-  <div class="row" mat-dialog-actions>
+  <div class="row pt-2 pb-2" mat-dialog-actions>
     <div class="col-md-6">
       <button mat-button class="bela-button" (click)="save()" cdkFocusInitial>
         Agregar
