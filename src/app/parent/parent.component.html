@@ -1,0 +1,61 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button class="nav-menu-icon ">
+      <mat-icon class="fa fa-bars" (click)="sidenav.toggle()"></mat-icon>
+    </button>
+    <span class="spacer-menu"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="nav-menu-style">
+    <mat-nav-list>
+      <mat-list-item [routerLinkActive]="['bela-is-active']" routerLink="/private/welcome" (click)="sidenav.toggle()">
+        <i class="fas fa-home mat-i-tag"></i>
+        Inicio
+      </mat-list-item>
+      <mat-list-item [routerLinkActive]="['bela-is-active']" routerLink="/private/hospital" (click)="sidenav.toggle()">
+        <i class="fa fa-hospital mat-i-tag"></i>
+        Hospitales
+      </mat-list-item>
+      <mat-list-item [routerLinkActive]="['bela-is-active']" routerLink="/private/doctor" (click)="sidenav.toggle()">
+        <i class="fas fa-user-md mat-i-tag"></i>
+        Doctores
+      </mat-list-item>
+      <mat-list-item [routerLinkActive]="['bela-is-active']" routerLink="/private/patient" (click)="sidenav.toggle()">
+        <i class="fas fa-user-injured mat-i-tag"></i>
+        Pacientes
+      </mat-list-item>
+      <mat-list-item [routerLinkActive]="['bela-is-active']" routerLink="/private/speciality" (click)="sidenav.toggle()">
+        <i class="fas fa-store-alt mat-i-tag"></i>
+        Especialidades
+      </mat-list-item>
+      <mat-list-item (click)="sidenav.toggle()">
+        <i class="fas fa-window-close mat-i-tag"></i>
+        Cerrar Menú
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div>
+      <div id="page-wrapper">
+        <div class="header col-md-12">
+          <h1 class="font-weight-bold page-header text-uppercase text-center">
+            {{this.title}}
+          </h1>
+          <ol class="breadcrumb">
+          </ol>
+        </div>
+        <div id="page-inner">
+          <router-outlet (activate)="setTitle($event)"></router-outlet>
+        </div>
+        <div>
+          <footer class="text-center mt-2">
+            <p>Todos los Derechos:
+              <a href="">angel chambi</a>
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

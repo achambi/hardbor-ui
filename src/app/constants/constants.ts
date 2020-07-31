@@ -1,0 +1,6 @@
+export const CONSTANTS = {
+  OPTIONS: {
+    DEFAULT_PAGE_INDEX_START: 0,
+    DEFAULT_PAGE_SIZE: 5,
+  }
+};

@@ -1,0 +1,94 @@
+@import "../../assets/css/custom-styles.scss";
+
+.spacer-menu {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar {
+  background-color: $theme-first-option !important;
+  color: #ffffff;
+}
+
+.nav-menu-icon {
+  background-color: $theme-first-option;
+  border: none;
+  color: $theme-title-white-color;
+  font-size: x-large;
+}
+
+.mat-i-tag {
+  margin-right: 10px;
+}
+
+.container-bela-button {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.bela-button {
+  background: $theme-first-option;
+}
+
+.bela-button:hover {
+  background: $theme-sixth-option;
+}
+
+.nav-menu-style {
+  background-color: $theme-first-option;
+}
+
+.mat-list-item {
+  color: $theme-title-white-color !important;
+  border-color: $theme-fourth-option !important;
+}
+
+.bela-icon-button {
+  background-color: $theme-fifth-option;
+  border-color: #dbdbdb;
+  color: $theme-title-white-color !important;
+}
+
+.bela-cancel-button,
+.bela-button {
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  width: 100%;
+  height: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  color: $theme-title-white-color !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+}
+
+.bela-cancel-button {
+  background: $theme-fourth-option;
+}
+
+.bela-modal-title {
+  background-color: $theme-fifth-option;
+  color: $theme-title-white-color;
+}
+
+.logo-href {
+  color: $theme-title-white-color;
+  padding: 2%;
+}
+
+.logo-href:hover {
+  color: $theme-fourth-option;
+}
+
+.bela-is-active {
+  background-color: $theme-third-option !important;
+}
+
+.bela-table-no-border td,
+.bela-table-no-border th {
+  border: none;
+}

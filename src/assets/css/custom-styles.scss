@@ -1,0 +1,25 @@
+$theme-first-option: #10a064;
+$theme-second-option: #10a064;
+$theme-third-option: #84b85f;
+$theme-fourth-option: #414744;
+$theme-fifth-option: #009b9f;
+$theme-sixth-option: #9ec8c9;
+$theme-title-white-color: #ffffff;
+
+.bela-table-view {
+  width: 100% !important;
+}
+
+.bela-table-view td {
+  vertical-align: middle !important;
+  padding: 0 10px 0 10px !important;
+}
+
+.bela-table-view th {
+  vertical-align: middle !important;
+  text-align: center;
+  font-size: medium;
+  background-color: $theme-first-option;
+  color: $theme-title-white-color;
+  padding: 0 20px 0 20px !important;
+}

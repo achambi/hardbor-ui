@@ -1,0 +1,35 @@
+<div class="container" style="background-color: white;">
+  <div class="row align-items-center">
+    <div class="col-md-12">
+      <h1 mat-dialog-title>Adicionar especialidad</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Nombre:</label>
+    </div>
+    <div class="col-md-6">
+      <input name="name" type="text" [(ngModel)]="this.name" class="w-100" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Descripción:</label>
+    </div>
+    <div class="col-md-6">
+      <input name="description" type="text" [(ngModel)]="this.description" class="w-100" />
+    </div>
+  </div>
+  <div class="row" mat-dialog-actions>
+    <div class="col-md-6">
+      <button mat-button class="bela-button" (click)="save()" cdkFocusInitial>
+        Aprobar Solicitud
+      </button>
+    </div>
+    <div class="col-md-6">
+      <button mat-button class="bela-cancel-button" (click)="exit()">
+        Salir
+      </button>
+    </div>
+  </div>
+</div>

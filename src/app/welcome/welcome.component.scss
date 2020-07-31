@@ -1,0 +1,14 @@
+@import "../../assets/css/custom-styles.scss";
+
+.button-dashboard-approved {
+  height: 60% !important;
+  width: 90% !important;
+  background: $theme-first-option;
+}
+.button-dashboard-approved:hover {
+  background: $theme-third-option;
+}
+
+.button-icon {
+  font-size: 50px;
+}
