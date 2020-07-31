@@ -1,0 +1,31 @@
+<div class="container h-100" style="background-color: white;">
+  <div class="row align-items-center">
+    <div class="col-md-12">
+      <h1 mat-dialog-title>Adicionar especialidad</h1>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-md-2">
+      <label>Especialidad:</label>
+    </div>
+    <div class="col-md-10">
+      <mat-select [(ngModel)]="this.specialityId" class="w-100">
+        <mat-option *ngFor="let option of specialityOptions" [value]="option.value">
+          {{option.text}}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+  <div class="row pt-2 pb-2" mat-dialog-actions>
+    <div class="col-md-6">
+      <button mat-button class="bela-button" type="submit" (click)="save()" cdkFocusInitial>
+        Agregar
+      </button>
+    </div>
+    <div class="col-md-6">
+      <button mat-button class="bela-cancel-button" (click)="exit()">
+        Salir
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,19 @@
 <div class="table-responsive">
   <div class="content">
     <div class="row pb-3">
-      <div class="col-md-6 container-bela-button">
-        <button class="bela-button" mat-button (click)="openAddHospital()">Nuevo Hospital</button>
+      <div class="col-md-2 container-bela-button"><label>Hospital:</label></div>
+      <div class="col-md-4 container-bela-button">
+        <mat-select [(ngModel)]="this.hospitalId" class="w-100">
+          <mat-option *ngFor="let option of hospitalOptions" [value]="option.value">
+            {{option.text}}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div class="col-md-3 container-bela-button">
+        <button class="bela-button" mat-button (click)="search()">Buscar</button>
+      </div>
+      <div class="col-md-3 container-bela-button">
+        <button class="bela-button" mat-button (click)="openAddDoctor()">Nuevo</button>
       </div>
     </div>
     <div class="row">
@@ -37,6 +48,33 @@
             <th mat-header-cell *matHeaderCellDef class="text-center">Dirección</th>
             <td mat-cell *matCellDef="let element" class="text-center"> {{element.address}} </td>
           </ng-container>
+
+          <!--hospital-->
+          <ng-container matColumnDef="hospital">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Hospital</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.hospital}} </td>
+          </ng-container>
+
+           <!--Approve-->
+           <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Adicionar Especialidad</th>
+            <td class="text-center" *matCellDef="let element">
+              <button mdbBtn type="button" class="btn bela-icon-button" (click)="addSpeciality(element.id)">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </td>
+          </ng-container>
+
+           <!--View-->
+           <ng-container matColumnDef="view">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Ver Especialidades</th>
+            <td class="text-center" *matCellDef="let element">
+              <button mdbBtn type="button" class="btn bela-icon-button">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
+            </td>
+          </ng-container>
+
 
           <!--suppress AngularUndefinedBinding -->
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

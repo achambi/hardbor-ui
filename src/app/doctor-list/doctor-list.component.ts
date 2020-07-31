@@ -6,6 +6,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { DoctorDataSource } from '../data-sources/doctor-data-source';
 import { DoctorService } from '@services/doctor/doctor.service';
 import { ModalDoctorComponent } from './modal-doctor/modal-.dotor.component';
+import { OptionResponse } from '@models/OptionResponse';
+import { HospitalService } from '@services/hospital/hospital.service';
+import { SpecialityService } from '@services/speciality/speciality.service';
+import { ModalAddSpecialityComponent } from './modal-add-speciality/modal-add-speciality.component';
 
 @Component({
   selector: 'app-doctor-list',
@@ -13,18 +17,29 @@ import { ModalDoctorComponent } from './modal-doctor/modal-.dotor.component';
   styleUrls: ['./doctor-list.component.scss']
 })
 export class DoctorListComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'lastName', 'birthDate', 'address'];
+  displayedColumns: string[] = ['id', 'name', 'lastName', 'birthDate', 'address', 'hospital', 'action', 'view'];
 
   doctorDataSource: DoctorDataSource;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  hospitalOptions: OptionResponse[];
+  hospitalId: number;
 
-  constructor(private dialog: MatDialog, private title: Title, private doctorService: DoctorService) {
+  constructor(private dialog: MatDialog, private title: Title,
+    private doctorService: DoctorService,
+    private hospitalService: HospitalService) {
     this.title.setTitle('Lista de Doctores');
   }
 
   ngOnInit(): void {
     this.doctorDataSource = new DoctorDataSource(this.doctorService);
-    this.doctorDataSource.load();
+    this.hospitalService.getOptions()
+      .subscribe(options => {
+        this.hospitalOptions = options;
+      }, error => {
+        console.log(error);
+      });
+    this.hospitalId = 1;
+    this.doctorDataSource.load(this.hospitalId);
   }
 
   ngAfterViewInit(): void {
@@ -41,18 +56,35 @@ export class DoctorListComponent implements OnInit, AfterViewInit {
   }
 
   load(): void {
-    this.doctorDataSource.load(this.paginator.pageIndex, this.paginator.pageSize);
+    this.doctorDataSource.load(this.hospitalId, this.paginator.pageIndex, this.paginator.pageSize);
   }
 
-  openAddHospital(): void {
+  openAddDoctor(): void {
     const dialogRef = this.dialog.open(ModalDoctorComponent, {
       width: '50%',
       autoFocus: false
+    });
+    dialogRef.afterClosed().subscribe((resultMessage: string) => {
+      console.log(resultMessage);
+      this.search();
+    });
+  }
+
+  addSpeciality(id: number): void {
+    const dialogRef = this.dialog.open(ModalAddSpecialityComponent, {
+      width: '50%',
+      autoFocus: false,
+      data: id
     });
     dialogRef.afterClosed().subscribe((resultMessage: boolean) => {
       console.log(resultMessage);
       this.load();
       this.paginator.pageIndex = 0;
     });
+  }
+
+  search() {
+    this.doctorDataSource.load(this.hospitalId);
+    this.paginator.pageIndex = 0;
   }
 }

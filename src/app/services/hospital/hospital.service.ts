@@ -37,23 +37,9 @@ export class HospitalService {
     );
   }
 
-  getSamples(): Observable<ListResponse<OptionResponse>> {
+  getOptions(): Observable<OptionResponse[]> {
     const endpoint = ApiEndpointService.getEndpoint('/hospitals');
-    return this.httpClient.get<any>(endpoint).pipe(
-      map(
-        result => {
-          const jsonResult = result;
-          const options: OptionResponse[] = [];
-          for (const option of jsonResult.data) {
-            options.push({
-              text: option.title,
-              value: option.id
-            });
-          }
-          return new ListResponse(jsonResult.total, options);
-        }
-      )
-    );
+    return this.httpClient.get<OptionResponse[]>(endpoint);
   }
 
   add(hospital: GeneralRequest) {

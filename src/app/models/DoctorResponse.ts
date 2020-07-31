@@ -4,4 +4,5 @@ export interface DoctorResponse {
   id: number;
   lastName: string;
   name: string;
+  hospital: string;
 }

@@ -25,9 +25,9 @@ export class DoctorDataSource implements DataSource<DoctorResponse> {
     this.countSubject.complete();
   }
 
-  load(pageNumber = CONSTANTS.OPTIONS.DEFAULT_PAGE_INDEX_START, pageSize = CONSTANTS.OPTIONS.DEFAULT_PAGE_SIZE): void {
+  load(hospitalId: number, pageNumber = CONSTANTS.OPTIONS.DEFAULT_PAGE_INDEX_START, pageSize = CONSTANTS.OPTIONS.DEFAULT_PAGE_SIZE): void {
     this.loadingSubject.next(true);
-    this.doctorService.getAll(pageNumber, pageSize)
+    this.doctorService.getAll(hospitalId, pageNumber, pageSize)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))

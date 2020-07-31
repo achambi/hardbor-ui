@@ -6,7 +6,6 @@ import { Title } from '@angular/platform-browser';
 import { tap } from 'rxjs/operators';
 import { ModalHospitalComponent } from './modal-hospital/modal-hospital.component';
 import { MatDialog } from '@angular/material/dialog';
-
 @Component({
   selector: 'app-hospital-list',
   templateUrl: './hospital-list.component.html',

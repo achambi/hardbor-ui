@@ -6,6 +6,7 @@ import { DoctorService } from '@services/doctor/doctor.service';
 import { DoctorRequest } from '@models/DoctorRequest';
 import { DatePipe } from '@angular/common';
 import { OptionResponse } from '@models/OptionResponse';
+import { SpecialityService } from '@services/speciality/speciality.service';
 
 @Component({
   selector: 'app-modal-doctor',
@@ -21,24 +22,34 @@ export class ModalDoctorComponent implements OnInit {
   birthDate: Date;
   birthDateStr: string;
   specialityId: number;
-  options: OptionResponse[];
+  hospitalOptions: OptionResponse[];
+  specialityOptions: OptionResponse[];
 
 
   constructor(private dialogRef: MatDialogRef<ModalDoctorComponent>,
               private readonly datePipe: DatePipe,
-              private doctorService: DoctorService,
-              private hospitalService: HospitalService) {
+              private hospitalService: HospitalService,
+              private specialityService: SpecialityService,
+              private doctorService: DoctorService) {
   }
 
   ngOnInit(): void {
     this.birthDate = null;
     this.birthDateStr = '';
-    this.hospitalService.getSamples()
-      .subscribe(next => {
-        this.options = next.data;
+    this.hospitalService.getOptions()
+      .subscribe(options => {
+        this.hospitalOptions = options;
       }, error => {
         console.log(error);
-      })
+      });
+    this.hospitalId = 1;
+    this.specialityService.getOptions()
+      .subscribe(options => {
+        this.specialityOptions = options;
+      }, error => {
+        console.log(error);
+      });
+    this.specialityId = 1;
   }
 
 
@@ -58,13 +69,13 @@ export class ModalDoctorComponent implements OnInit {
       lastName: this.lastName,
       name: this.name,
       specialityId: this.specialityId,
-
     };
-    let resultEndpoint = false;
+
+    let resultEndpoint = '';
     this.doctorService.add(doctor)
       .subscribe(response => {
         console.log(response);
-        resultEndpoint = true;
+        resultEndpoint = response.message;
       }, result => {
         console.log(result);
       });

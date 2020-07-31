@@ -18,8 +18,8 @@ export class DoctorService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAll(page: number, limit: number): Observable<ListResponse<DoctorResponse>> {
-    const url = ApiEndpointService.getEndpoint(`/doctors/${page}/${limit}`);
+  getAll(hospialId: number, page: number, limit: number): Observable<ListResponse<DoctorResponse>> {
+    const url = ApiEndpointService.getEndpoint(`/doctors/hospital/${hospialId}/${page}/${limit}`);
     return this.httpClient.get<any>(url).pipe(
       map(
         result => {
@@ -31,7 +31,8 @@ export class DoctorService {
               name: result.content[i].name,
               address: result.content[i].address,
               birthDate: result.content[i].birthDate,
-              lastName: result.content[i].lastName
+              lastName: result.content[i].lastName,
+              hospital: result.content[i].hospital
             };
             doctors.push(doctor);
           }
@@ -45,5 +46,11 @@ export class DoctorService {
     const url = ApiEndpointService.getEndpoint('/doctors');
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.httpClient.post<ResponseMessage>(url, JSON.stringify(doctor), httpOptions);
+  }
+
+  addSpeciality(id: number, specialityId: number) {
+    const url = ApiEndpointService.getEndpoint(`/doctors/${id}/speciality/${specialityId}`);
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.httpClient.patch<ResponseMessage>(url, {}, httpOptions);
   }
 }

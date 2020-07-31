@@ -6,6 +6,7 @@ import { Speciality } from '@models/speciality';
 import { ListResponse } from '@models/list-response';
 import { map } from 'rxjs/operators';
 import { GeneralRequest } from '@models/generalRequest';
+import { OptionResponse } from '@models/OptionResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class SpecialityService {
   }
 
   getAll(page: number, limit: number): Observable<ListResponse<Speciality>> {
-    const url = ApiEndpointService.getEndpoint(`/speciality/${page}/${limit}`);
+    const url = ApiEndpointService.getEndpoint(`/specialities/${page}/${limit}`);
     return this.httpClient.get<any>(url).pipe(
       map(
         result => {
@@ -36,8 +37,13 @@ export class SpecialityService {
     );
   }
 
+  getOptions(): Observable<OptionResponse[]> {
+    const endpoint = ApiEndpointService.getEndpoint('/specialities');
+    return this.httpClient.get<OptionResponse[]>(endpoint);
+  }
+
   add(speciality: GeneralRequest) {
-    const url = ApiEndpointService.getEndpoint('/speciality');
+    const url = ApiEndpointService.getEndpoint('/specialities');
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.httpClient.post<any>(url, JSON.stringify(speciality), httpOptions);
   }

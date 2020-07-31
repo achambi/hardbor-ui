@@ -26,9 +26,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ModalHospitalComponent } from './hospital-list/modal-hospital/modal-hospital.component';
 import { ModalDoctorComponent } from './doctor-list/modal-doctor/modal-.dotor.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatSelectModule} from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { ModalAddSpecialityComponent } from './doctor-list/modal-add-speciality/modal-add-speciality.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatSelectModule} from '@angular/material/select';
     SpecialityListComponent,
     ModalSpecialityComponent,
     ModalHospitalComponent,
-    ModalDoctorComponent
+    ModalDoctorComponent,
+    ModalAddSpecialityComponent
   ],
   imports: [
     BrowserModule,
