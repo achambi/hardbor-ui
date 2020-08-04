@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GeneralRequest } from '@models/generalRequest';
+import { GeneralRequest } from '@models/GeneralRequest';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HospitalService } from '@services/hospital/hospital.service';
 

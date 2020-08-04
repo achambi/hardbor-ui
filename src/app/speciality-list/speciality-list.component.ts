@@ -5,7 +5,7 @@ import { SpecialityDataSource } from '../data-sources/speciality-data-source';
 import { tap } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { ModalSpecialityComponent } from './modal-speciality/modal-speciality.component';
-import { GeneralRequest } from '@models/generalRequest';
+import { GeneralRequest } from '@models/GeneralRequest';
 import { MatDialog } from '@angular/material/dialog';
 
 

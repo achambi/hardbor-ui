@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiEndpointService } from '@services/config/api-endpoint.service';
 import { ListResponse } from '@models/list-response';
 import { map } from 'rxjs/operators';
-import { GeneralRequest } from '@models/generalRequest';
+import { GeneralRequest } from '@models/GeneralRequest';
 import { Hospital } from '@models/hospital';
 import { OptionResponse } from '@models/OptionResponse';
 

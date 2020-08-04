@@ -1,3 +1,6 @@
+import { ModalAddRecordComponent } from './patient-list/modal-add-record/modal-add-record.component';
+import { ModalViewRecordComponent } from './patient-list/modal-view-record/modal-view-record.component';
+import { ModalPatientComponent } from './patient-list/modal-add-patient/modal-patient.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -25,11 +28,13 @@ import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ModalHospitalComponent } from './hospital-list/modal-hospital/modal-hospital.component';
-import { ModalDoctorComponent } from './doctor-list/modal-doctor/modal-.dotor.component';
+import { ModalDoctorComponent } from './doctor-list/modal-doctor/modal-doctor.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { ModalAddSpecialityComponent } from './doctor-list/modal-add-speciality/modal-add-speciality.component';
+import { ModalDoctorSpecialitiesComponent } from './doctor-list/modal-doctor-specialities/modal-doctor-specialities.component';
+import { ModalDoctorPatientsComponent } from './doctor-list/modal-doctor-patients/modal-doctor-patients.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,12 @@ import { ModalAddSpecialityComponent } from './doctor-list/modal-add-speciality/
     ModalSpecialityComponent,
     ModalHospitalComponent,
     ModalDoctorComponent,
-    ModalAddSpecialityComponent
+    ModalAddSpecialityComponent,
+    ModalDoctorSpecialitiesComponent,
+    ModalDoctorPatientsComponent,
+    ModalPatientComponent,
+    ModalViewRecordComponent,
+    ModalAddRecordComponent
   ],
   imports: [
     BrowserModule,

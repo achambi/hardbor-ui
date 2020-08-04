@@ -1,1 +1,96 @@
-<p>patient-list works!</p>
+<div class="table-responsive">
+  <div class="content">
+    <div class="row pb-3">
+      <div class="col-md-2 container-bela-button"><label>Hospital:</label></div>
+      <div class="col-md-4 container-bela-button">
+        <mat-select [(ngModel)]="this.hospitalId" class="w-100">
+          <mat-option *ngFor="let option of hospitalOptions" [value]="option.value">
+            {{option.text}}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div class="col-md-3 container-bela-button">
+        <button class="bela-button" mat-button (click)="search()">Buscar</button>
+      </div>
+      <div class="col-md-3 container-bela-button">
+        <button class="bela-button" mat-button (click)="openAddPatient()">Nuevo</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <table mat-table [dataSource]="patientDataSource" class="bela-table-view table">
+          <!--id-->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Id</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.id}} </td>
+          </ng-container>
+
+          <!--name-->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Nombre</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.name}} </td>
+          </ng-container>
+
+          <!--lastName-->
+          <ng-container matColumnDef="lastName">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Apellido</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.lastName}} </td>
+          </ng-container>
+
+          <!--type-->
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Tipo</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.type}} </td>
+          </ng-container>
+
+          <!--birthName-->
+          <ng-container matColumnDef="birthDate">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Fecha de nacimiento</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.birthDate}} </td>
+          </ng-container>
+
+          <!--address-->
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Dirección</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.address}} </td>
+          </ng-container>
+
+          <!--hospital-->
+          <ng-container matColumnDef="hospital">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Hospital</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.hospital}} </td>
+          </ng-container>
+
+          <!--Approve-->
+          <ng-container matColumnDef="addRecord">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Adicionar Consulta</th>
+            <td class="text-center" *matCellDef="let element">
+              <button mdbBtn type="button" class="btn bela-icon-button" (click)="addRecord(element.id)">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </td>
+          </ng-container>
+
+          <!--View Patients-->
+          <ng-container matColumnDef="viewRecords">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Ver Consultas</th>
+            <td class="text-center" *matCellDef="let element">
+              <button mdbBtn type="button" class="btn bela-icon-button" (click)="viewRecord(element.id)">
+                <i class="fa fa-medkit" aria-hidden="true"></i>
+              </button>
+            </td>
+          </ng-container>
+
+
+          <!--suppress AngularUndefinedBinding -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+          <!--suppress AngularUndefinedBinding -->
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5]" [pageSize]="5" showFirstLastButtons>
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

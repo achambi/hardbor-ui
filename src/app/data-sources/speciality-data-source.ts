@@ -1,13 +1,13 @@
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { Speciality } from '@models/speciality';
+import { Thing } from '@models/thing';
 import { SpecialityService } from '@services/speciality/speciality.service';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { catchError, finalize } from 'rxjs/operators';
 import { CONSTANTS } from '@constants';
 import { ListResponse } from '@models/list-response';
 
-export class SpecialityDataSource implements DataSource<Speciality> {
-  private requestSubject = new BehaviorSubject<Speciality[]>([]);
+export class SpecialityDataSource implements DataSource<Thing> {
+  private requestSubject = new BehaviorSubject<Thing[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
   private countSubject = new BehaviorSubject<number>(0);
   public counter$ = this.countSubject.asObservable();
@@ -15,7 +15,7 @@ export class SpecialityDataSource implements DataSource<Speciality> {
   constructor(private specialityService: SpecialityService) {
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<Speciality[]> {
+  connect(collectionViewer: CollectionViewer): Observable<Thing[]> {
     return this.requestSubject.asObservable();
   }
 
@@ -31,7 +31,7 @@ export class SpecialityDataSource implements DataSource<Speciality> {
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
-      ).subscribe((result: ListResponse<Speciality>) => {
+      ).subscribe((result: ListResponse<Thing>) => {
         this.requestSubject.next(result.data);
         this.countSubject.next(result.total);
       }

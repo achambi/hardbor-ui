@@ -3,13 +3,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Title } from '@angular/platform-browser';
 import { tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { DoctorDataSource } from '../data-sources/doctor-data-source';
+import { PersonDataSource } from '../data-sources/person-data-source';
 import { DoctorService } from '@services/doctor/doctor.service';
-import { ModalDoctorComponent } from './modal-doctor/modal-.dotor.component';
+import { ModalDoctorComponent } from './modal-doctor/modal-doctor.component';
 import { OptionResponse } from '@models/OptionResponse';
 import { HospitalService } from '@services/hospital/hospital.service';
 import { SpecialityService } from '@services/speciality/speciality.service';
 import { ModalAddSpecialityComponent } from './modal-add-speciality/modal-add-speciality.component';
+import { ModalDoctorSpecialitiesComponent } from './modal-doctor-specialities/modal-doctor-specialities.component';
+import { ModalDoctorPatientsComponent } from './modal-doctor-patients/modal-doctor-patients.component';
 
 @Component({
   selector: 'app-doctor-list',
@@ -17,9 +19,9 @@ import { ModalAddSpecialityComponent } from './modal-add-speciality/modal-add-sp
   styleUrls: ['./doctor-list.component.scss']
 })
 export class DoctorListComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'lastName', 'birthDate', 'address', 'hospital', 'action', 'view'];
+  displayedColumns: string[] = ['id', 'name', 'lastName', 'type', 'birthDate', 'address', 'hospital', 'action', 'view', 'viewPatients'];
 
-  doctorDataSource: DoctorDataSource;
+  doctorDataSource: PersonDataSource;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   hospitalOptions: OptionResponse[];
   hospitalId: number;
@@ -31,7 +33,7 @@ export class DoctorListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.doctorDataSource = new DoctorDataSource(this.doctorService);
+    this.doctorDataSource = new PersonDataSource(this.doctorService);
     this.hospitalService.getOptions()
       .subscribe(options => {
         this.hospitalOptions = options;
@@ -86,5 +88,21 @@ export class DoctorListComponent implements OnInit, AfterViewInit {
   search() {
     this.doctorDataSource.load(this.hospitalId);
     this.paginator.pageIndex = 0;
+  }
+
+  viewSpecialities(id: number): void {
+    const dialogRef = this.dialog.open(ModalDoctorSpecialitiesComponent, {
+      width: '50%',
+      autoFocus: false,
+      data: id
+    });
+  }
+
+  viewPatients(id: number): void {
+    const dialogRef = this.dialog.open(ModalDoctorPatientsComponent, {
+      width: '50%',
+      autoFocus: false,
+      data: id
+    });
   }
 }

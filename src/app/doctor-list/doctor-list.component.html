@@ -37,6 +37,12 @@
             <td mat-cell *matCellDef="let element" class="text-center"> {{element.lastName}} </td>
           </ng-container>
 
+          <!--type-->
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Tipo</th>
+            <td mat-cell *matCellDef="let element" class="text-center"> {{element.type}} </td>
+          </ng-container>
+
           <!--birthName-->
           <ng-container matColumnDef="birthDate">
             <th mat-header-cell *matHeaderCellDef class="text-center">Fecha de nacimiento</th>
@@ -55,8 +61,8 @@
             <td mat-cell *matCellDef="let element" class="text-center"> {{element.hospital}} </td>
           </ng-container>
 
-           <!--Approve-->
-           <ng-container matColumnDef="action">
+          <!--Approve-->
+          <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef class="text-center">Adicionar Especialidad</th>
             <td class="text-center" *matCellDef="let element">
               <button mdbBtn type="button" class="btn bela-icon-button" (click)="addSpeciality(element.id)">
@@ -65,12 +71,22 @@
             </td>
           </ng-container>
 
-           <!--View-->
-           <ng-container matColumnDef="view">
+          <!--View-->
+          <ng-container matColumnDef="view">
             <th mat-header-cell *matHeaderCellDef class="text-center">Ver Especialidades</th>
             <td class="text-center" *matCellDef="let element">
-              <button mdbBtn type="button" class="btn bela-icon-button">
+              <button mdbBtn type="button" class="btn bela-icon-button" (click)="viewSpecialities(element.id)">
                 <i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
+            </td>
+          </ng-container>
+
+          <!--View Patients-->
+          <ng-container matColumnDef="viewPatients">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Consultas</th>
+            <td class="text-center" *matCellDef="let element">
+              <button mdbBtn type="button" class="btn bela-icon-button" (click)="viewPatients(element.id)">
+                <i class="fa fa-medkit" aria-hidden="true"></i>
               </button>
             </td>
           </ng-container>
