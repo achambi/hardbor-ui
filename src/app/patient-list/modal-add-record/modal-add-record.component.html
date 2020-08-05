@@ -1,0 +1,63 @@
+<div class="container h-100" style="background-color: white;">
+  <div class="row align-items-center">
+    <div class="col-md-12 pt-2">
+      <h1 mat-dialog-title>Adicionar Consulta</h1>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-md-2">
+      <label>Hospital:</label>
+    </div>
+    <div class="col-md-4">
+      <mat-select [(ngModel)]="this.hospitalId" class="w-100" (selectionChange)="onHospitalChange($event)">
+        <mat-option *ngFor="let option of hospitalOptions" [value]="option.value">
+          {{option.text}}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-2">
+      <label>Fecha de consulta:</label>
+    </div>
+    <div class="col-md-3">
+      <input name="recordDate" type="text" [matDatepicker]="recordDatePicker" class="form-control input-sm"
+        [(ngModel)]="this.recordDate" (ngModelChange)="onRecordDateChange($event)" placeholder="mm/dd/yyyy"
+        class="w-100">
+    </div>
+    <div class="col-md-1 ml-0 pl-0">
+      <mat-datepicker-toggle matSuffix [for]="recordDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #recordDatePicker></mat-datepicker>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-md-2">
+      <label>Doctor:</label>
+    </div>
+    <div class="col-md-10">
+      <mat-select [(ngModel)]="this.doctorId" class="w-100">
+        <mat-option *ngFor="let option of this.doctorOptions" [value]="option.value">
+          {{option.text}}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+  <div class="row pb-2">
+    <div class="col-md-2">
+      <label>Descripción:</label>
+    </div>
+    <div class="col-md-10">
+      <textarea cols="40" rows="3" type="text" [(ngModel)]="this.description" class="w-100" required></textarea>
+    </div>
+  </div>
+  <div class="row pt-2 pb-2" mat-dialog-actions>
+    <div class="col-md-6">
+      <button mat-button class="bela-button" type="submit" (click)="save()" cdkFocusInitial>
+        Agregar
+      </button>
+    </div>
+    <div class="col-md-6">
+      <button mat-button class="bela-cancel-button" (click)="exit()">
+        Salir
+      </button>
+    </div>
+  </div>
+</div>

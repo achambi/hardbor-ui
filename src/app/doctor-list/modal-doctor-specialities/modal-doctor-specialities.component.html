@@ -1,0 +1,27 @@
+<div class="container h-100" style="background-color: white;">
+  <div class="row">
+    <div class="col-md-12 pt-2">
+      <table class="bela-table-view table">
+        <tr style="height: 56px;">
+          <th class="text-center">Id</th>
+          <th class="text-center">Nombre</th>
+          <th class="text-center">Descripción</th>
+        </tr>
+        <tbody>
+          <tr *ngFor="let item of this.specialities">
+            <td class="text-center">{{item.id}}</td>
+            <td class="text-center">{{item.name}}</td>
+            <td class="text-center">{{item.description}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row pt-2 pb-2" mat-dialog-actions>
+    <div class="col-md-12">
+      <button mat-button class="bela-cancel-button" (click)="exit()">
+        Salir
+      </button>
+    </div>
+  </div>
+</div>

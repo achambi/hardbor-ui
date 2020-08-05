@@ -1,0 +1,29 @@
+<div class="container h-100" style="background-color: white;">
+  <div class="row">
+    <div class="col-md-12 pt-2">
+      <table class="bela-table-view table">
+        <tr style="height: 56px;">
+          <th class="text-center">Id</th>
+          <th class="text-center">Doctor</th>
+          <th class="text-center">Prescripción</th>
+          <th class="text-center">Fecha de registro</th>
+        </tr>
+        <tbody>
+          <tr *ngFor="let item of this.patients">
+            <td class="text-center">{{item.id}}</td>
+            <td class="text-center">{{item.fullName}}</td>
+            <td class="text-center">{{item.note}}</td>
+            <td class="text-center">{{item.recordDate}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row pt-2 pb-2" mat-dialog-actions>
+    <div class="col-md-12">
+      <button mat-button class="bela-cancel-button" (click)="exit()">
+        Salir
+      </button>
+    </div>
+  </div>
+</div>
